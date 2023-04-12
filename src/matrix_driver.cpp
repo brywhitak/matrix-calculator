@@ -19,13 +19,14 @@ int main() {
     bool done = false;
     std::string userInput;
     char userChoice;
+    MatrixCalculator currentCalc = MatrixCalculator();
+
     
     while (!done) {
         // print out menu
         print_menu(choice);
-    
-        MatrixCalculator currentCalc = MatrixCalculator();
 
+        // switch statement to handle user input
         switch (choice) {
             case 1:
                 std::cout << "You selected adding a matrix. Adding matrix now..." << std::endl;
@@ -43,14 +44,26 @@ int main() {
                 currentCalc.add(currentCalc.get_matrix(rhs)).print_matrix();
                 break;
             case 3:
-                std::cout << "You selected subtraction. Which two matrices would you like to add?\n";
-                std::cout << "Left hand side:";
+                std::cout << "You selected subtraction. Which two matrices would you like to subtract?\n";
+                std::cout << "Left hand side: ";
                 std::cin >> lhs;
-                std::cout << "Right hand side:";
+                std::cout << "Right hand side: ";
                 std::cin >> rhs;
                 std::cout << "Performing subtraction and displaying the matrix..." << std::endl;
                 currentCalc.set_current_matrix(lhs);
                 currentCalc.subtract(currentCalc.get_matrix(rhs)).print_matrix();
+                break;
+            case 4:
+                std::cout << "You selected multiplication. Which two matrices would you like to multiply?\n";
+                std::cout << "Left hand side: ";
+                std::cin >> lhs;
+                std::cout << "Right hand side: ";
+                std::cin >> rhs;
+                std::cout << "Performing multiplication and displaying the matrix..." << std::endl;
+                currentCalc.get_matrix(lhs).print_matrix();
+                currentCalc.get_matrix(rhs).print_matrix();
+                currentCalc.set_current_matrix(lhs);
+                currentCalc.multiply(currentCalc.get_matrix(rhs)).print_matrix();
                 break;
             case 7: 
                 std::cout << "You selected quit. Quitting now..." << std::endl;
@@ -60,6 +73,7 @@ int main() {
                 std::cout << "Error in selection." << std::endl;
             }
         // possible tech debt, look at this later
+        // ask user if they want to continue
         if (!done) {
             std::cout << "Would you like to continue? Enter (y/N): ";
             do {

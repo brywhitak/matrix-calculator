@@ -10,7 +10,6 @@
 #define MATRIX_CALCULATOR_HPP
 
 #include "matrix.hpp"
-#include <vector>
 
 class MatrixCalculator {
     public:

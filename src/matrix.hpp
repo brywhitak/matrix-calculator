@@ -10,8 +10,7 @@
 #define MATRIX_HPP
 
 #include <iostream>
-
-const int MAX_SIZE = 64;
+#include <vector>
 
 class Matrix {
     public:
@@ -22,19 +21,19 @@ class Matrix {
         Matrix(int rows, int cols);
 
         // copy constructor
-        Matrix(int in[MAX_SIZE][MAX_SIZE], int rows, int cols);
+        Matrix(std::vector<std::vector<int>> matrix, int rows, int cols);
 
         // copy assignment operator=
         Matrix & operator=(Matrix & rhs);
         
         // get and print functions
         Matrix get_matrix() { return Matrix(matrix, rows, cols); }
-        void print_matrix();
+        void print_matrix() const;
         
         // allow MatrixCalculator to access private of Matrix
         friend class MatrixCalculator;
     private:
-        int matrix[MAX_SIZE][MAX_SIZE];
+        std::vector<std::vector<int>> matrix;
         int rows;
         int cols;
 };
