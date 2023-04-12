@@ -17,9 +17,19 @@ class MatrixCalculator {
         // default constructor
         MatrixCalculator();
 
-        //copy constructor
-        MatrixCalculator(Matrix current);
+        // add a matrix to the vector
+        void add_matrix();
 
+        // return a matrix within the vector
+        Matrix get_matrix(int index) {
+            return matrix_vector[index];
+        }
+
+        // set current matrix
+        void set_current_matrix(int index) {
+            current_matrix = matrix_vector[index];
+        }
+        
         // matrix operations
         Matrix add(const Matrix& rhs);
         Matrix subtract(const Matrix& rhs);

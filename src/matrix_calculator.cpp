@@ -8,14 +8,17 @@
 
 #include "matrix_calculator.hpp"
 
-MatrixCalculator::MatrixCalculator() {
-    current_matrix = Matrix();
-    num_calculations = 0;
+MatrixCalculator::MatrixCalculator() : matrix_vector(std::vector<Matrix>()), current_matrix(Matrix()), num_calculations(0) {
 }
 
-MatrixCalculator::MatrixCalculator(Matrix current) {
-    current_matrix = current;
-    num_calculations = 0;
+void MatrixCalculator::add_matrix() {
+    int rows, cols;
+    std::cout << "Enter number of rows: ";
+    std::cin >> rows;
+    std::cout << "Enter number of columns: ";
+    std::cin >> cols;
+    Matrix new_matrix = Matrix(rows, cols);
+    matrix_vector.push_back(new_matrix);
 }
 
 Matrix MatrixCalculator::add(const Matrix& rhs) {

@@ -23,6 +23,9 @@ class Matrix {
 
         // copy constructor
         Matrix(int in[MAX_SIZE][MAX_SIZE], int rows, int cols);
+
+        // copy assignment operator=
+        Matrix & operator=(Matrix & rhs);
         
         // get and print functions
         Matrix get_matrix() { return Matrix(matrix, rows, cols); }

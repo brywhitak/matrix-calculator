@@ -25,6 +25,13 @@ Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols) {
     }
 }
 
+Matrix & Matrix::operator=(Matrix & rhs) {
+    std::swap(this->matrix, rhs.matrix);
+    rows = rhs.rows;
+    cols = rhs.cols;
+    return *this;
+}
+
 Matrix::Matrix(int in[MAX_SIZE][MAX_SIZE], int rows, int cols) : rows(rows), cols(cols) {
     for (int i = 0; i < MAX_SIZE; ++i) {
         for (int j = 0; j < MAX_SIZE; ++j) {
