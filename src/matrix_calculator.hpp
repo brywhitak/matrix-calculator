@@ -21,7 +21,7 @@ class MatrixCalculator {
         void add_matrix();
 
         // add matrix after calculation
-        void add_matrix(Matrix& matrix);
+        void add_matrix(const Matrix& matrix);
 
         // return a matrix within the vector
         Matrix get_matrix(int index) {
@@ -37,6 +37,9 @@ class MatrixCalculator {
         int get_num_matrices() {
             return num_matrices;
         }
+
+        // print all matrices
+        void print_matrices();
 
         // matrix operations
         Matrix add(const Matrix& rhs);

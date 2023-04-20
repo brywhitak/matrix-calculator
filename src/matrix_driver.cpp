@@ -30,7 +30,7 @@ int main() {
             case 1:
                 std::cout << "You selected adding a matrix. Adding matrix now..." << std::endl;
                 currentCalc.add_matrix();
-                std::cout << "Input matrix at position " << currentCalc.get_num_matrices() << std::endl;
+                std::cout << "Input matrix at position " << currentCalc.get_num_matrices() - 1 << std::endl;
                 break;
             case 2:
                 std::cout << "You selected addition. Which two matrices would you like to add?\n";
@@ -62,7 +62,11 @@ int main() {
                 currentCalc.set_current_matrix(lhs);
                 currentCalc.multiply(currentCalc.get_matrix(rhs));
                 break;
-            case 7: 
+            case 7:
+                std::cout << "You selected printing all matrices." << std::endl;
+                currentCalc.print_matrices();
+                break;
+            case 8: 
                 std::cout << "You selected quit. Quitting now..." << std::endl;
                 done = true;
                 break;
@@ -100,7 +104,8 @@ void print_menu(int & choice) {
     std::cout << "4.   Multiplication\n";
     std::cout << "5.   Find the determinant\n";
     std::cout << "6.   Find the inverse matrix\n";
-    std::cout << "7.   Quit\n";
+    std::cout << "7.   Print all matrices\n";
+    std::cout << "8.   Quit\n";
     std::cout << std::flush;
     do {
         std::cout << "Enter user choice now: ";

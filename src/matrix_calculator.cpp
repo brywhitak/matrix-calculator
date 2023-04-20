@@ -25,13 +25,13 @@ void MatrixCalculator::add_matrix() {
 }
 
 // add a matrix to the matrix_vector after a calculation
-void MatrixCalculator::add_matrix(Matrix& matrix) {
+void MatrixCalculator::add_matrix(const Matrix& matrix) {
     char choice;
 
     std::cout << "Would you like to save this matrix? (y/N): ";
     std::cin >> choice;
     choice = toupper(choice);
-    while(choice != 'Y' && choice != 'N') {
+    while (choice != 'Y' && choice != 'N') {
         std::cout << "Invalid input. Please enter 'y' or 'n': ";
         std::cin >> choice;
         choice = toupper(choice);
@@ -40,7 +40,17 @@ void MatrixCalculator::add_matrix(Matrix& matrix) {
     if (choice == 'Y') {
         matrix_vector.push_back(matrix);
         ++num_matrices;
-        std::cout << "Input matrix at position " << num_matrices << std::endl;
+        std::cout << "Input matrix at position " << num_matrices - 1 << std::endl;
+    }
+}
+
+// print all matrices in the vector
+void MatrixCalculator::print_matrices() {
+    int numIterations = 0;
+    std::cout << "Printing all matrices: " << std::endl;
+    for (std::vector<Matrix>::iterator it = matrix_vector.begin(); it != matrix_vector.end(); ++it) {
+        std::cout << "Iteration " << numIterations++ << std::endl;
+        it->print_matrix();
     }
 }
 
@@ -49,8 +59,7 @@ Matrix MatrixCalculator::add(const Matrix& rhs) {
     Matrix finalMatrix = Matrix();
     finalMatrix.rows = rhs.rows;
     finalMatrix.cols = rhs.cols;
-    
-    std::cout << matrix_vector.size() << std::endl;
+
     // perform addition
     for (int i = 0; i < rhs.rows; ++i) {
         std::vector<int> tempVec = {};
@@ -60,8 +69,8 @@ Matrix MatrixCalculator::add(const Matrix& rhs) {
         }
         finalMatrix.matrix.push_back(tempVec);
     }
-    add_matrix(finalMatrix);
     finalMatrix.print_matrix();
+    add_matrix(finalMatrix);
 
     return finalMatrix;
 }
@@ -81,8 +90,8 @@ Matrix MatrixCalculator::subtract(const Matrix& rhs) {
         }
         finalMatrix.matrix.push_back(tempVec);
     }
-    add_matrix(finalMatrix);
     finalMatrix.print_matrix();
+    add_matrix(finalMatrix);
 
     return finalMatrix;
 }
@@ -106,8 +115,8 @@ Matrix MatrixCalculator::multiply(const Matrix& rhs) {
         }
         finalMatrix.matrix.push_back(result_row);
     }
-    add_matrix(finalMatrix);
     finalMatrix.print_matrix();
+    add_matrix(finalMatrix);
 
     return finalMatrix;
 }
